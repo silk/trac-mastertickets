@@ -167,6 +167,7 @@ class MasterTicketsModule(Component):
         return req.path_info.startswith('/depgraph')
 
     def process_request(self, req):
+        req.perm.require('TICKET_VIEW')
         path_info = req.path_info[10:]
         
         if not path_info:
